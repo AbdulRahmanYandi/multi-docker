@@ -10,11 +10,11 @@ scripts:
    - docker run -e CI=true syed/react-test npm test 
 
 after_success: 
-   - docker build -t syedrahmandevops/multi-client ./client
-   - docker build -t syedrahmandevops/multi-server ./server
-   - docker build -t syedrahmandevops/multi-nginx ./nginx
-   - docker build -t syedrahmandevops/multi-worker ./worker    
-   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password--stdin
+   - docker build -t syed/multi-client ./client
+   - docker build -t syed/multi-server ./server
+   - docker build -t syed/multi-nginx ./nginx
+   - docker build -t syed/multi-worker ./worker    
+   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
    - docker push syed/multi-client
    - docker push syed/multi-server
    - docker push syed/multi-nginx
