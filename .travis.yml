@@ -10,13 +10,24 @@ scripts:
    - docker run -e CI=true syed/react-test npm test 
 
 after_success: 
-   - docker build -t syedrahmandevops/multi-client ./client
-   - docker build -t syedrahmandevops/multi-server ./server
-   - docker build -t syedrahmandevops/multi-nginx ./nginx
-   - docker build -t syedrahmandevops/multi-worker ./worker    
-   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-   - docker push syedrahmandevops/multi-client
-   - docker push syedrahmandevops/multi-server
-   - docker push syedrahmandevops/multi-nginx
-   - docker push syedrahmandevops/multi-worker 
+   - docker build -t syed/multi-client ./client
+   - docker build -t syed/multi-server ./server
+   - docker build -t syed/multi-nginx ./nginx
+   - docker build -t syed/multi-worker ./worker    
+   - echo ""$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password--stdin
+   - docker push syed/multi-client
+   - docker push syed/multi-server
+   - docker push syed/multi-nginx
+   - docker push syed/multi-worker 
 
+deploy:
+   provider: elasticbeanstalk
+   region: 'elasticbeanstalk-ap-southeast-2-471112674323'
+   app: 'multi-docker'
+   env: 'MultiDocker-env'
+   bucket_name: 'elasticbeanstalk-us-east-1-923445559289'
+   bucket_path: 'multi-docker'
+   on:
+      branch: master
+   access_key_id: $AWS_ACCESS_KEY
+   secret_access_key: $AWS_SECRET_KEY
