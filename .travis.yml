@@ -20,6 +20,7 @@ after_success:
    - docker push syed/multi-nginx
    - docker push syed/multi-worker 
 
+
 deploy:
    provider: elasticbeanstalk
    region: 'elasticbeanstalk-ap-southeast-2-471112674323'
