@@ -19,8 +19,6 @@ after_success:
    - docker push syed/multi-server
    - docker push syed/multi-nginx
    - docker push syed/multi-worker 
-
-
 deploy:
    provider: elasticbeanstalk
    region: 'elasticbeanstalk-ap-southeast-2-471112674323'
@@ -29,6 +27,6 @@ deploy:
    bucket_name: 'elasticbeanstalk-us-east-1-923445559289'
    bucket_path: 'multi-docker'
    on:
-      branch: master
+      branch: main
    access_key_id: $AWS_ACCESS_KEY
    secret_access_key: $AWS_SECRET_KEY
