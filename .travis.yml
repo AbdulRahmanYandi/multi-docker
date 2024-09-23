@@ -21,10 +21,10 @@ after_success:
    - docker push syed/multi-worker 
 deploy:
    provider: elasticbeanstalk
-   region: 'elasticbeanstalk-ap-southeast-2-471112674323'
+   region: 'ap-southeast-2'
    app: 'multi-docker'
    env: 'MultiDocker-env'
-   bucket_name: 'elasticbeanstalk-us-east-1-923445559289'
+   bucket_name: 'elasticbeanstalk-ap-southeast-2-471112674323'
    bucket_path: 'multi-docker'
    on:
       branch: main
